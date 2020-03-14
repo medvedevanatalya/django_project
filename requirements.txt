@@ -1,0 +1,5 @@
+Django==3.0.3
+psycopg2==2.8.4
+Pillow==7.0.0
+django-phonenumber-field==4.0.0
+phonenumbers==8.11.5

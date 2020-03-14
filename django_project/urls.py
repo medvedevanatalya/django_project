@@ -18,5 +18,5 @@ import django.urls as u
 
 urlpatterns = [
     u.path('admin/', admin.site.urls),
-    u.path('animal_shelter/', u.include('animal_shelter.urls')),
+    u.path('animal/', u.include('animal_shelter.urls')),
 ]
