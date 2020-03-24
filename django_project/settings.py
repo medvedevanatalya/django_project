@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'animal_shelter',
+    'crispy_forms',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

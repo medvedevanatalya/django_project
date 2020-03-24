@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    {% block content %}
+
+        <h3>Список всех животных приюта</h3>
+            {% if object_list %}
+                <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Животное</th>
+                                <th scope="col">Пол</th>
+                                <th scope="col">Возраст</th>
+                                <th scope="col">Дата приема</th>
+                                <th scope="col">Усыновлен?</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for animal_card in object_list %}
+                            <tr>
+                                <td>{{ animal_card.name }}</td>
+                                <td>{{ animal_card.animal }}</td>
+                                <td>{{ animal_card.gender }}</td>
+                                <td>{{ animal_card.age }}</td>
+                                <td>{{ animal_card.date_receipt | date:"d M Y" }}</td>
+                                {% if animal_card.is_adopted %}
+                                    <td>усыновлен</td>
+                                {% else %}
+                                    <td>не усыновлен</td>
+                                {% endif %}
+                                <td>
+                                    <button type="submit" name="deleted">
+                                        <a href="deleted/{{animal_card.id}}">Удалить карту животного</a>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="submit" name="adopted">
+                                        <a href="adopted/{{animal_card.id}}">Усыновить животное</a>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="submit" name="adopted">
+                                        <a href="update_animal_card/{{animal_card.id}}">Изменить карту животного</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>Пока не создана не одна карта животного</p>
+            {% endif %}
+
+    {% endblock %}
+
+{% endblock %}
