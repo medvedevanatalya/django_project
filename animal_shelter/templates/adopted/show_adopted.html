@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Информация об усыновленном {{ adopted.animal_ }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <p>Животное: {{ adopted.animal_card }}</p>
+        <p>Родитель: {{ adopted.parent_card }}</p>
+        <p>Дата усыновления: {{ adopted.date_adoption | date:"d M Y" }}</p>
+    </div>
+{% endblock %}

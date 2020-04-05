@@ -20,8 +20,9 @@ class ParentCardModelForm(ModelForm):
 
 
 class AdoptedAnimalsModelForm(ModelForm):
-    animal_card = ModelChoiceField(label='Животное: ', queryset=AnimalCard.objects.order_by('name'))
-    parent_card = ModelChoiceField(label='Родитель: ', queryset=ParentCard.objects.order_by('fio'))
+    animal_card = ModelChoiceField(label='Животное',
+                                   queryset=AnimalCard.objects.filter(is_adopted=False).order_by('name'))
+    parent_card = ModelChoiceField(label='Родитель', queryset=ParentCard.objects.order_by('fio'))
 
     class Meta:
         model = AdoptedAnimals

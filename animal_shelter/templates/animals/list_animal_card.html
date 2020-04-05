@@ -35,23 +35,24 @@
                                 {% endif %}
                                 <td>
                                     <button type="submit" name="deleted">
-                                        <a href="deleted/{{animal_card.id}}">Удалить карту животного</a>
+                                        <a href="delete_animal_card/{{animal_card.id}}">Удалить карту животного</a>
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="submit" name="adopted">
-                                        <a href="adopted/{{animal_card.id}}">Усыновить животное</a>
-                                    </button>
+<!--                                    {% if animal_card.is_adopted == False %}-->
+<!--                                    <button type="submit" name="adopted">-->
+<!--                                        <a href="create_adopted/">Усыновить животное</a>-->
+<!--                                    </button>-->
+<!--                                    {% endif %}-->
                                 </td>
                                 <td>
-                                    <button type="submit" name="adopted">
+                                    <button type="submit" name="update">
                                         <a href="update_animal_card/{{animal_card.id}}">Изменить карту животного</a>
                                     </button>
                                 </td>
                             </tr>
+                        {% endfor %}
                         </tbody>
-
-                    {% endfor %}
                 </table>
             {% else %}
                 <p>Пока не создана не одна карта животного</p>

@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Создание новой карты животного
+    Редактирование карты родителя
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form | crispy }}
-        <input type="submit" value="Принять" class="btn btn-success">
+        <input type="submit" value="Изменить" class="btn btn-success">
     </form>
 
 {% endblock %}

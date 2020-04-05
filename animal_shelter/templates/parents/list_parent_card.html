@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Список всех родителей</h3>
+    {% if object_list %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ФИО</th>
+                <th scope="col">Адрес</th>
+                <th scope="col">Номер телефона</th>
+                <th scope="col">Пол</th>
+                <th scope="col">Дата рождения</th>
+                <th scope="col">E-mail</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for parent_card in object_list %}
+            <tr>
+                <td>{{ parent_card.fio }}</td>
+                <td>{{ parent_card.address }}</td>
+                <td>{{ parent_card.phone_number }}</td>
+                <td>{{ parent_card.gender }}</td>
+                <td>{{ parent_card.date_of_birth | date:"d M Y" }}</td>
+                <td>{{ parent_card.email }}</td>
+                <td>
+                    <button type="submit" name="deleted">
+                        <a href="delete_parent_card/{{parent_card.id}}">Удалить карту родителя</a>
+                    </button>
+                </td>
+                <td>
+                    <button type="submit" name="updated">
+                        <a href="update_parent_card/{{parent_card.id}}">Изменить карту родителя</a>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Пока не создана не одна карта родителя</p>
+    {% endif %}
+
+{% endblock %}

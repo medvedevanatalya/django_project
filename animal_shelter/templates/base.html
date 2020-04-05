@@ -17,6 +17,18 @@
         <div class="col-8">
           <h1 class="mt-2"></h1>
           <hr class="mt-0 mb-4">
+            <div class="btn-group-vertical">
+                <button><a href="/animal/animals/list_animal_card">Список всех животных</a></button>
+                <button><a href="/animal/new_animal_card">Новая карта животного</a></button>
+            </div>
+            <div class="btn-group-vertical">
+                <button><a href="/animal/parents/list_parent_card">Список всех родителей</a></button>
+                <button><a href="/animal/new_parent_card">Новая карта родителя</a></button>
+            </div>
+            <div class="btn-group-vertical">
+                <button witch><a href="/animal/adopted/list_adopted">Список всех усыновленных</a></button>
+                <button><a href="/animal/new_adopted">Усыновить животное</a></button>
+            </div>
           {% block content %} {% endblock %}
         </div>
       </div>

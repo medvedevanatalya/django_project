@@ -2,36 +2,39 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    {{ animal_card.animal.name }}'s task #{{ animal_card.id }}
+    Карта животного {{ animal_card.name }}
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h3>Имя животного: {{ animal_card.name }}</h3>
-    <p>Животное: {{ animal_card.animal.name }}</p>
-    <p>Порода: {{ animal_card.breed }}</p>
-    <p>Дата приема: {{ animal_card.date_receipt | date:"d M Y" }}</p>
-    {% if animal_card.is_adopted is True %}
-        <p>Дата усыновления: {{ animal_card.date_completed }}</p>
-    {% else %}
-        <p>Животное не усыновленно</p>
-    {% endif %}
-    <p>Возраст животного: {{ animal_card.age }}</p>
-    <p>Пол: {{ animal_card.gender }}</p>
-    <p>Состояние на момент приема: {{ animal_card.state_time_admission }}</p>
-    <p>Причина попадания в приют: {{ animal_card.reason_getting_shelter }}</p>
-    <p>Дополнительная информация: {{ animal_card.additional_inform }}</p>
+    <div class="container">
+        <h3>Имя животного: {{ animal_card.name }}</h3>
+        <p>Животное: {{ animal_card.animal.name }}</p>
+        <p>Порода: {{ animal_card.breed }}</p>
+        <p>Дата приема: {{ animal_card.date_receipt | date:"d M Y" }}</p>
+        {% if animal_card.is_adopted is True %}
+            <p>Дата усыновления: {{ adopted.date_adoption }}</p>
+            <p>Родитель: {{ adopted.parent_card }}</p>
+        {% else %}
+            <p>Животное не усыновленно</p>
+        {% endif %}
+        <p>Возраст животного: {{ animal_card.age }}</p>
+        <p>Пол: {{ animal_card.gender }}</p>
+        <p>Состояние на момент приема: {{ animal_card.state_time_admission }}</p>
+        <p>Причина попадания в приют: {{ animal_card.reason_getting_shelter }}</p>
+        <p>Дополнительная информация: {{ animal_card.additional_inform }}</p>
 
 
-<!--    <button type="submit" name="deleted">-->
-<!--        <a href="delete_animal_card/{{animal_card.id}}">Удалить карту животного</a>-->
-<!--    </button>-->
-<!--    <button type="submit" name="adopted">-->
-<!--        <a href="adopted_animal/{{animal_card.id}}">Усыновить животное</a>-->
-<!--    </button>-->
-<!--    <button type="submit" name="update">-->
-<!--        <a href="update_animal_card/{{animal_card.id}}">Изменить карту животного</a>-->
-<!--    </button>-->
+        <button type="submit" name="deleted">
+            <a href="delete_animal_card/{{animal_card.id}}">Удалить карту животного</a>
+        </button>
+<!--        {% if animal_card.is_adopted == False %}-->
+<!--        <button type="submit" name="adopted">-->
+<!--            <a href="adopted_animal/{{animal_card.id}}">Усыновить животное</a>-->
+<!--        </button>-->
+<!--        {% endif %}-->
+        <button type="submit" name="update">
+            <a href="{% url 'update_animal_card' pk=animal_card.id%}">Изменить карту животного</a>
+        </button>
 
-</div>
+    </div>
 {% endblock %}

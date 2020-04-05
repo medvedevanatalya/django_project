@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Список всех усыновленных животных
+{% endblock %}
+
+{% block content %}
+
+    <h3>Список всех усыновленных животных</h3>
+    {% if object_list %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Животное</th>
+                    <th scope="col">Родитель</th>
+                    <th scope="col">Дата усыновления</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for adopted in object_list %}
+            <tr>
+                <td>{{ adopted.animal_card }}</td>
+                <td>{{ adopted.parent_card }}</td>
+                <td>{{ adopted.date_adoption }}</td>
+                <td>
+                    <button type="submit" name="deleted">
+                        <a href="delete_adopted/{{adopted.id}}">Удалить информацию об усыновлении</a>
+                    </button>
+                </td>
+                <td>
+                    <button type="submit" name="update">
+                        <a href="update_adopted/{{adopted.id}}">Изменить информацию об усыновлении</a>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Пока не усыновлено ни одного животного</p>
+    {% endif %}
+
+{% endblock %}

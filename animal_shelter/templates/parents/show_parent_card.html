@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Карта родителя {{ parent_card.fio }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <p>ФИО: {{ parent_card.fio }}</p>
+        <p>Адрес: {{ parent_card.address }}</p>
+        <p>Номер телефона: {{ parent_card.phone_number }}</p>
+        <p>Пол: {{ parent_card.gender }}</p>
+        <p>Дата рождения: {{ parent_card.date_of_birth | date:"d M Y" }}</p>
+        <p>E-mail: {{ parent_card.email }}</p>
+    </div>
+{% endblock %}
