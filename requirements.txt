@@ -1,5 +1,5 @@
 djangorestframework
-Django==3.0.3
+Django==3.1.9
 psycopg2==2.8.4
 Pillow==7.0.0
 django-phonenumber-field==4.0.0
